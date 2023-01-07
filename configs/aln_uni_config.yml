@@ -1,0 +1,35 @@
+model:
+  d_inp: 1024
+  d_model: 128
+data:
+  num_workers: 2
+  name: tvsum
+  setting: Canonical 
+  split: 0
+  num_frames: 200
+  paths:
+    interim: 'data/interim/'
+    youtube8M: 'data/interim/youtube8M/selected_features'
+
+hparams:
+  lr: 0.0001
+  weight_decay: 0.0001
+  ratio_s:  0
+  ratio_k1: 0.1
+  alpha: 0.5
+  num_frames: 200
+  batch_size: 32
+  n_layer: 4
+  n_head: 1
+setup:
+  is_logger: False
+  wandb_name: video-sum
+
+lightning:
+  trainer:
+    max_epochs: 40
+    log_every_n_steps: 100
+
+is_raw: True
+use_unq: True 
+use_unif: True
